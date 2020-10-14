@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  form(method='POST' action='')
+    div.form-group
+      label(for='pin') Student PIN:
+      input#pin.form-control(type='number' placeholder='000000' name='pin' required='true' value=(undefined===student ? '' : student.pin) )
+    button.btn.btn-primary(type='submit') Submit

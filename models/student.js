@@ -12,9 +12,9 @@ var StudentSchema = new Schema(
 
 // Virtual for student's full name
 StudentSchema
-.virtual('name')
-.get(function () {
-  return this.first_name + ' ' + this.family_name;
-})
+  .virtual('name')
+  .get(function () {
+    return this.first_name + ' ' + this.family_name;
+  });
 
 module.exports = mongoose.model('Student', StudentSchema);

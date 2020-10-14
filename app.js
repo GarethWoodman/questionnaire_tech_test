@@ -3,22 +3,34 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var mongoose = require('mongoose');
+const session = require('express-session');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
-//Set up mongoose connection
-var mongoose = require('mongoose');
+//Set up mongoose connectio
 var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
-mongoose.connect(mongoDB, { userNewUrlParser: true, useUnifiedTopology: true });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+mongoose.connect(
+  "mongodb://localhost/questionnaire",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
+
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose is connected");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// sessions setup
+app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 
 app.use(logger('dev'));
 app.use(express.json());
