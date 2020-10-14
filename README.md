@@ -42,6 +42,37 @@ So that I can keep a record of students results
 I want to be able to to see which students submitted their questions or not
 ```
 
+## Database
+
+`STUDENT` table:
+
+| field      | type              |
+| ---------  | ----------------- |
+| NAME       | STRING            |
+
+`CATEGORY` table:
+
+| field      | type              |
+| ---------  | ----------------- |
+| NAME       | STRING            |
+
+`QUESTION` table:
+
+| field             | type              |
+| ---------         | ----------------- |
+| CATEGORY_ID       | CATEGORY          |
+| CONTENT           | STRING            |
+| INCORRECT_ANSWERS | ARRAY             |
+| CORRECT_ANSWER    | STRING            |
+
+`RESULT` table:
+
+| field         | type              |
+| ---------     | ----------------- |
+| STUDENT_ID    | STUDENT           |
+| CATEGORY_ID   | CATEGORY          |
+| SCORE         | INTEGER           |
+
 ## Mock Ups
 
 ![studentOrTeacher](mockups/student_or_teacher.png)\
