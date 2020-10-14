@@ -7,8 +7,15 @@ var StudentSchema = new Schema(
     pin: {type: Number, required: true, maxlength: 6},
     first_name: {type: String, required: true, maxlength: 100},
     family_name: {type: String, required: true, maxlength: 100},
-  }
-);
+  },
+  {
+    toObject: {
+    virtuals: true
+    },
+    toJSON: {
+    virtuals: true 
+    }
+  });
 
 // Virtual for student's full name
 StudentSchema
