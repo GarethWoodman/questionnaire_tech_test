@@ -48,7 +48,9 @@ I want to be able to to see which students submitted their questions or not
 
 | field      | type              |
 | ---------  | ----------------- |
-| NAME       | STRING            |
+| PIN        | Number            |
+| FIRST_NAME | STRING            |
+| FAMILY_NAME| STRING            |
 
 `CATEGORY` table:
 
