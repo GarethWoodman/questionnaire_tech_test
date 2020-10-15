@@ -4,8 +4,14 @@ block content
   h1 Results
 
 
-  each student in students
-    dt #{student.name} - #{student.submitted}
+  each studentCategory in studentCategories
+    if studentCategory.category === liveCategory.name
+      dt #[strong Category #{studentCategory.category} - LIVE]
+    else
+      dt #[strong Category #{studentCategory.category}]
+    each student in studentCategory.students
+     dt #{student.name} - #{student.submitted}
+    <br>
       
   <br>
   a(href='/control_panel') Control Panel
