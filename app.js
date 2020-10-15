@@ -13,10 +13,10 @@ var app = express();
 const PORT = process.env.PORT || 3000;
 
 //Set up mongoose connectio
-// var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
+var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/questionnaire",
+  mongoDB,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
