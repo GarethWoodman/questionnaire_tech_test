@@ -4,6 +4,7 @@ var router = express.Router();
 var student_controller = require('../controllers/studentController')
 var category_controller = require('../controllers/categoryController')
 var question_controller = require('../controllers/questionController')
+var result_controller = require('../controllers/resultController')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,5 +39,7 @@ router.post('/submit', question_controller.submit)
 router.get('/submitted', function(req, res, next) {
   res.render('answers_submitted')
 })
+
+router.get('/results', result_controller.list)
 
 module.exports = router;
