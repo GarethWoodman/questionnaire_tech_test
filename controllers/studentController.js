@@ -1,9 +1,5 @@
-const { body, validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
 
 var Student = require('../models/student');
-
-var async = require('async')
 
 exports.student_login = function(req, res) {
   console.log(req.body.pin)
