@@ -3,11 +3,14 @@ extends layout
 block content
   h1 Select a category
 
-  p Live Category: 
-  a(href='/category_questions') #{liveCategory.name}
+  p 
+    | Live Category: 
+    a(href='/category_questions') #{liveCategory.name}
 
   each category in categories
-    dd #{category.name}
-      
+    if category.name !== liveCategory.name
+      dt #{category.name}
+  
+  <br>
   a(href='/login') SignOut
 

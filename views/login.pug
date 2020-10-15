@@ -1,8 +1,13 @@
 extends layout
 
 block content
+  h1 Welcome! 
+  p Please enter your student pin
+
   form(method='POST' action='')
     div.form-group
-      label(for='pin') Student PIN:
+      label(for='pin') Student PIN: 
       input#pin.form-control(type='number' placeholder='000000' name='pin' required='true' value=(undefined===student ? '' : student.pin) )
+
+    <br>
     button.btn.btn-primary(type='submit') Submit
