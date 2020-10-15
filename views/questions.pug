@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  //- h1 #{student.name}
   h1 #{question.content}
 
   form(method='POST' action='/submit')
     div.form-group
-      input(type='hidden', name='question', value={question})
+      input(type='hidden', name='question', value=question.content)
+      input(type='hidden', name='correct_answer', value=question.correct_answer)
       label Answer 1
       input(type='radio', name='answer', value='1')
       <br>
@@ -21,4 +21,6 @@ block content
       <br>
       <br>
     button.btn.btn-primary(name="next" type='submit' value="next") Next
-    button.btn.btn-primary(name="back" type='submit' value="back") Back
+    <br>
+    if prev
+      button.btn.btn-primary(name="back" type='submit' value="back") Back

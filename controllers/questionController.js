@@ -3,30 +3,60 @@ var Question = require('../models/question');
 
 exports.submit = function(req, res) {
   console.log(req.body.next)
-  console.log(req.body.bck)
+  console.log(req.body.back)
   console.log(req.body.answer)
-  console.log(req.body.question)
+  
+  var question = req.body.question;
+  var correct_answer = req.body.correct_answer;
+
+  console.log(question)
+  console.log(correct_answer)
+  // Checks if answer is correct and adds to score
+  if(correct_answer === req.body.answer){
+    req.session.score[question] = 1;
+  } else {
+    req.session.score[question] = 0;
+  }
+
+  if(req.session.questionNumber === 9){
+    //redirect to submission page;
+  }
+
+  if(req.body.next){
+    req.session.questionNumber += 1;
+  } 
+
+  if(req.body.back){
+    req.session.questionNumber -= 1;
+  }
+
+  console.log(req.session.score)
+
+  res.redirect('/questions')
 }
 
 exports.current_question = function(req, res) {
+
+  var i = req.session.questionNumber;
+  var questions = req.session.questions;
   
-  // if(!req.session.current_question) {
-  //   req.session.current_question = 0
-  // }
+  var prevQuestion = "";
+  var nextQuestion = "";
 
-  // //current_question = question[0]
-  // //next_question = question[1]
-  // //prev_quesiton = nil
+  if(i < 1){
+    prevQuestion = null;
+  } else {
+    prevQuestion = questions[i - 1]
+  }
 
-  // //current_question = question[1]
-  // //next_question = question[2]
-  // //prev_question = question[0]
+  if((i + 1) > 9){
+    nextQuestion = null;
+  } else {
+    nextQuestion = questions[i + 1]
+  }
 
-  Question.findById(req.params.id)
-    .exec(function (err, getQuestion) {
-      if(err || getQuestion.length === 0) { return res.redirect('/login')}
-      console.log(getQuestion)
-      res.render('questions', {question: getQuestion} );
-    })
+  currentQuestion = questions[i]
+
+  res.render('questions', {question: currentQuestion, next: nextQuestion, prev: prevQuestion})
 
 };

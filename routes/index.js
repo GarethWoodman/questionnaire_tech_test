@@ -21,7 +21,7 @@ router.post('/login', student_controller.student_login)
 //   res.render('questions', { student: req.session.currentStudent, cateogry: req.session.currentCategory });
 // })
 
-router.get('/questions/:id', question_controller.current_question);
+router.get('/questions', question_controller.current_question);
 
 router.get('/categories', function(req, res, next) {
   res.render('categories')

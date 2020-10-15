@@ -1,6 +1,7 @@
 
 var Student = require('../models/student');
 var Question = require('../models/question');
+const { detectSeries } = require('async');
 
 exports.student_login = function(req, res) {
   console.log(req.body.pin)
@@ -15,7 +16,10 @@ exports.student_login = function(req, res) {
     .exec(function (err, questions) {
       if(err || questions.length === 0) { return res.redirect('/login')}
       console.log(questions)
-      res.redirect('/questions/' + questions[0]._id)
+      req.session.questions = questions
+      req.session.questionNumber = 0
+      req.session.score = {}
+      res.redirect('/questions')
     })
 }
 
