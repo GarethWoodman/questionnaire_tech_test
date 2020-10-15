@@ -10,6 +10,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const PORT = process.env.PORT || 3000;
+
 //Set up mongoose connectio
 // var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
 
