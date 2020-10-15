@@ -1,4 +1,24 @@
 extends layout
 
 block content
-  h1 #{student.name}
+  //- h1 #{student.name}
+  h1 #{question.content}
+
+  form(method='POST' action='/submit')
+    div.form-group
+      input(type='hidden', name='question', value={question})
+      label Answer 1
+      input(type='radio', name='answer', value='1')
+      <br>
+      label Answer 2
+      input(type='radio', name='answer', value='2')
+      <br>
+      label Answer 3
+      input(type='radio', name='answer', value='3')
+      <br>
+      label Answer 4
+      input(type='radio', name='answer', value='4')
+      <br>
+      <br>
+    button.btn.btn-primary(name="next" type='submit' value="next") Next
+    button.btn.btn-primary(name="back" type='submit' value="back") Back
