@@ -4,9 +4,9 @@ var Schema = mongoose.Schema;
 
 var ResultSchema = new Schema (
   {
-    student: {type: Schema.Types.ObjectId, ref: 'Student', required: true},
-    student: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
-    score: {type: Number},
+    student_id: {type: Schema.Types.ObjectId, ref: 'Student', required: true},
+    category_id: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
+    score: {type: Object},
   }
 )
 

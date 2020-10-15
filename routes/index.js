@@ -35,4 +35,8 @@ router.get('/control_panel', function(req, res, next) {
 
 router.post('/submit', question_controller.submit)
 
+router.get('/submitted', function(req, res, next) {
+  res.render('answers_submitted')
+})
+
 module.exports = router;
