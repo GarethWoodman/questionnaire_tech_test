@@ -11,10 +11,10 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 //Set up mongoose connectio
-var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
+// var mongoDB = 'mongodb+srv://Gareth:1Competent1@cluster0.g73lg.azure.mongodb.net/questionnaire?retryWrites=true&w=majority'
 
 mongoose.connect(
-  "mongodb://localhost/questionnaire",
+  process.env.MONGODB_URI || "mongodb://localhost/questionnaire",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
