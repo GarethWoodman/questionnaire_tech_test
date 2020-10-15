@@ -24,6 +24,8 @@ router.post('/login', student_controller.student_login)
 
 router.get('/questions', question_controller.current_question);
 
+router.get('/category_questions', question_controller.category);
+
 router.get('/categories', function(req, res, next) {
   res.render('categories')
 })
@@ -39,6 +41,8 @@ router.post('/submit', question_controller.submit)
 router.get('/submitted', function(req, res, next) {
   res.render('answers_submitted')
 })
+
+router.get('/student_categories', category_controller.student_categories)
 
 router.get('/results', result_controller.list)
 

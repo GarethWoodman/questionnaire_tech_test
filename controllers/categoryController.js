@@ -11,3 +11,11 @@ exports.category_selection = function(req, res) {
       res.redirect('/control_panel')
     })
 }
+
+exports.student_categories = function(req, res) {
+  Category.find({})
+    .exec(function (err, categoryList){
+      if(err || categoryList.length === 0) { return res.redirect('/categories') }
+      res.render('student_categories', {categories: categoryList, liveCategory: req.session.currentCategory})
+    });
+}

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Select a category
+
+  p Live Category: 
+  a(href='/category_questions') #{liveCategory.name}
+
+  each category in categories
+    dd #{category.name}
+      
+  a(href='/login') SignOut
+

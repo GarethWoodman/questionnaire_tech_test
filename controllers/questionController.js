@@ -1,5 +1,18 @@
 
+var Question = require('../models/question');
 var Result = require('../models/result');
+
+exports.category = function(req, res, next) {
+  Question.find({category_id: req.session.currentCategory._id})
+    .exec(function (err, questions) {
+      if(err || questions.length === 0) { return res.redirect('/login')}
+      console.log(questions)
+      req.session.questions = questions
+      req.session.questionNumber = 0
+      req.session.score = {}
+      res.redirect('/questions')
+    })
+}
 
 exports.submit = function(req, res, next) {
   console.log(req.body.next)
