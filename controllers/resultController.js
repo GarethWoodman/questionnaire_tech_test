@@ -1,4 +1,3 @@
-
 var Result = require('../models/result');
 var Student = require('../models/student');
 var Category = require('../models/category');
@@ -6,8 +5,7 @@ var Category = require('../models/category');
 var async = require('async')
 
 exports.list = function(req, res) {
-
-  var category_students = []  
+  var categoryResults = []  
 
   async.parallel({
     students: function(callback) {
@@ -19,36 +17,33 @@ exports.list = function(req, res) {
     categories: function(callback) {
       Category.find({}, callback);
     }
-  },  function(err, student_results) {
+  },  function(err, studentResults) {
 
-        var student_list = [];
-        var result_list = [];
-
-        student_results.categories.forEach(function (category) {
-          student_list = [];
-          result_list = [];
+        // Loop through each category
+        studentResults.categories.forEach(function (category) {
+          var studentList = [];
+          var resultList = [];
           
-          (student_results.results).forEach(function (result) {
+          // Push result for category in resultList
+          (studentResults.results).forEach(function (result) {
             if(JSON.stringify(result.category_id) === JSON.stringify(category._id)){
-              result_list.push(JSON.stringify(result.student_id))
+              resultList.push(JSON.stringify(result.student_id))
             }
           });
 
-          console.log('result_list', result_list)
-
-          student_results.students.forEach(function (student) {
-            if(result_list.includes(JSON.stringify(student._id))){
-              student_list.push({name: student.name, submitted: "Yes"})
+          // If student has submitted answers for category store in studentList
+          studentResults.students.forEach(function (student) {
+            if(resultList.includes(JSON.stringify(student._id))){
+              studentList.push({name: student.name, submitted: "Yes"})
             } else {
-              student_list.push({name: student.name, submitted: "No"})
+              studentList.push({name: student.name, submitted: "No"})
             }
           })
-          console.log('category', category)
-          category_students.push({category: category.name, students: student_list});
-        });
-        
-        console.log(category_students)
 
-        res.render('results', { studentCategories: category_students, error: err, liveCategory: req.session.currentCategory});
+          // Push Category along with list of students and their results
+          categoryResults.push({category: category.name, students: studentList});
+        });
+      
+        res.render('results', { studentCategories: categoryResults, error: err, liveCategory: req.session.currentCategory});
   });
 }
