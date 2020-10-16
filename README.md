@@ -6,6 +6,41 @@ A teacher wants to run a test for her pupils but due to Covid-19 she needs to do
 ## Live Deployment
 [Questionnaire](https://questionnaire-tech-test.herokuapp.com/)
 
+## Instructions
+1. As a Teacher, go to the control panel and select a category to go live
+2. Then go to Student results to see a list of students who have and haven't completed the categories
+3. Log in as one of the students below by entering a pin
+4. Answer all 10 questions
+5. Go back to Student results as a teacher and the student's submission will be updated
+
+## Students
+```
+pin: 123456
+first_name: "Gareth"
+family_name:"Woodman"
+```
+```
+pin: 333666
+first_name: "Oran"
+family_name:"Ratcliffe"
+```
+```
+pin: 111222
+first_name: "Koa"
+family_name:"Mccray"
+```
+```
+pin: 333444
+first_name: "Nola"
+family_name:"Benton"
+```
+```
+pin: 666777
+first_name: "Jamel"
+family_name:"Kavanagh"
+```
+
+
 ## User Stores (Behavioural Driven Development)
 
 ```
