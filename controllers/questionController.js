@@ -1,9 +1,10 @@
 var Question = require('../models/question');
 var Result = require('../models/result');
+var api = require('../api')
 
 // Load questions based on current category in session
 exports.category = function(req, res, next) {
-  Question.find({category_id: req.session.currentCategory._id})
+  Question.find({category_id: api.currentCategory._id})
     .exec(function (err, questions) {
       if(err || questions.length === 0) { return res.redirect('/login')}
       storeSessions(req, questions)
@@ -50,7 +51,7 @@ function storeResult(req, res) {
   var result = new Result(
     {
       student_id: req.session.currentStudent._id,
-      category_id: req.session.currentCategory._id,
+      category_id: api.currentCategory._id,
       score: req.session.score,
     });
     result.save(function (err) {

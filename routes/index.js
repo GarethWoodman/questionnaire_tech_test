@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var api = require('../api');
 
 var student_controller = require('../controllers/studentController')
 var category_controller = require('../controllers/categoryController')
@@ -9,7 +8,6 @@ var result_controller = require('../controllers/resultController')
 
 // Home Page
 router.get('/', function(req, res, next) {
-  api.get(req)
   res.render('index', { title: 'Express' });
 });
 

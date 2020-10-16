@@ -1,6 +1,7 @@
 var Result = require('../models/result');
 var Student = require('../models/student');
 var Category = require('../models/category');
+var api = require('../api');
 
 var async = require('async')
 
@@ -43,7 +44,9 @@ exports.list = function(req, res) {
           // Push Category along with list of students and their results
           categoryResults.push({category: category.name, students: studentList});
         });
+
+        console.log(api)
       
-        res.render('results', { studentCategories: categoryResults, error: err, liveCategory: req.session.currentCategory});
+        res.render('results', { studentCategories: categoryResults, error: err, liveCategory: api.currentCategory});
   });
 }
