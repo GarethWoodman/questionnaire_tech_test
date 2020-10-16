@@ -6,6 +6,9 @@ A teacher wants to run a test for her pupils but due to Covid-19 she needs to do
 ## Live Deployment
 [Questionnaire](https://questionnaire-tech-test.herokuapp.com/)
 
+## Video Demo
+[Demo](https://streamable.com/zj9dvs)
+
 ## Instructions
 1. As a Teacher, go to the control panel and select a category to go live
 2. Then go to Student results to see a list of students who have and haven't completed the categories
