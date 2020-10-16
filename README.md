@@ -32,12 +32,6 @@ I want to be able to set a category of questions
 
 ```
 As a Teacher
-So that I can encourage all students to complete the set of questions
-I will set a time limit for 24 hours when the set of questions goes live
-```
-
-```
-As a Teacher
 So that I can keep a record of students results
 I want to be able to to see which students submitted their questions or not
 ```
