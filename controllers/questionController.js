@@ -16,9 +16,12 @@ exports.category = function(req, res, next) {
 exports.submit = function(req, res, next) {  
   var question = req.body.question;
   var correct_answer = req.body.correct_answer;
+  console.log(correct_answer)
+  console.log(req.body.answer)
 
   // If answer is correct store 1 to score, otherwise 0
   correct_answer === req.body.answer ? (req.session.score[question] = 1) : req.session.score[question] = 0;
+  console.log(req.session.score)
     
   // If it's the last question store the result and go to the 'submtted' page
   // Else go to next or previous question based on user interaction
@@ -36,7 +39,16 @@ exports.current_question = function(req, res) {
   var currentQuestion = req.session.questions[i]
   var prevQuestion = i > 0
 
-  res.render('questions', {question: currentQuestion, prev: prevQuestion})
+  // Shuffle incorrect answers and add correct answer to an array
+  let currentAnswers = Object.create(currentQuestion.incorrect_answers);
+  currentAnswers.push(currentQuestion.correct_answer)
+  currentAnswers = currentAnswers.sort(() => Math.random() - 0.5)
+
+  console.log('currentQuestion After', currentQuestion)
+  console.log('answers', currentAnswers)
+
+
+  res.render('questions', {question: currentQuestion, answers: currentAnswers, prev: prevQuestion})
 };
 
 

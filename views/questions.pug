@@ -7,20 +7,14 @@ block content
     div.form-group
       input(type='hidden', name='question', value=question.content)
       input(type='hidden', name='correct_answer', value=question.correct_answer)
-      label Answer 1
-      input(type='radio', name='answer', value='1')
+
+      each answer in answers
+        label Answer: #{answer} 
+        input(type='radio', name='answer', value=answer)
+        <br>
       <br>
-      label Answer 2
-      input(type='radio', name='answer', value='2')
-      <br>
-      label Answer 3
-      input(type='radio', name='answer', value='3')
-      <br>
-      label Answer 4
-      input(type='radio', name='answer', value='4')
-      <br>
-      <br>
-    button.btn.btn-primary(name="next" type='submit' value="next") Next
-    <br>
+
     if prev
       button.btn.btn-primary(name="back" type='submit' value="back") Back
+
+    button.btn.btn-primary(name="next" type='submit' value="next") Next
