@@ -6,7 +6,8 @@ block content
 
   each studentCategory in studentCategories
     if studentCategory.category === liveCategory.name
-      dt #[strong Category #{studentCategory.category} - LIVE]
+      dt
+        strong(style='color: green') Category #{studentCategory.category} - LIVE
     else
       dt #[strong Category #{studentCategory.category}]
     each student in studentCategory.students
