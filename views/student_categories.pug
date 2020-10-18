@@ -5,8 +5,11 @@ block content
 
   p 
     | Live Category: 
-    a(href='/category_questions') #{liveCategory.name}
-
+    if completed
+      | (Completed) #{liveCategory.name}
+    else 
+      a(href='/category_questions') #{liveCategory.name}
+      
   each category in categories
     if category.name !== liveCategory.name
       dt Pending: #{category.name}
